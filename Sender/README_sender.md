@@ -36,28 +36,28 @@ Esempio: -s "ServizioLoginV1"
 Specifica l'URL completo dell'endpoint API del nostro Submitter Web.
 Importante: Dovrai usare l'IP della macchina dove gira il Submitter se non è in esecuzione sul tuo PC.
 Default: http://localhost:5000/api/submit
-Esempio (se il Submitter è su 192.168.1.105): -u http://192.168.1.105:5000/api/submit
+Esempio (se il Submitter è su 192.168.1.150): -u http://192.168.1.150:5000/api/submit
 
 --help o -h
 Mostra il messaggio di aiuto con tutte le opzioni.
 
 # Esempi di Utilizzo #
 
-## 1. Inviare una singola flag specificando autore e servizio ##
+## 1. Inviare una singola flag specificando autore e servizio 
 python3 sender.py -f "FLAGUNICA1234567890ABCDEF01234=" -a "MarioR" -s "SecureChat"
 
-## 2. Inviare più flag dalla riga di comando ##
+## 2. Inviare più flag dalla riga di comando 
 python3 sender.py -f "FLAGABC..." "FLAGXYZ..." -a "ExploitSuper" -s "WebServer"
 
-## 3. Inviare flag al Submitter tramite file txt (es. IP 192.168.1.105) ##
-python3 sender.py -i flags.txt -a "Pippo" -s "AuthService" -u http://192.168.1.105:5000/api/submit
+## 3. Inviare flag al Submitter tramite file txt
+python3 sender.py -i flags.txt -a "Pippo" -s "AuthService" -u http://192.168.1.150:5000/api/submit
 
-## Cosa Succede Quando lo Esegui ##
+## Cosa Succede Quando lo Esegui 
 Lo script leggerà le flag che hai specificato. Per ogni flag, tenterà di inviarla al Submitter Web.
 Vedrai un messaggio SUCCESS o ERROR per ogni flag inviata.
 Puoi controllare lo stato dettagliato (Accepted, Rejected, Old, ecc.) e la risposta del Game Server guardando la UI del Submitter Web (http://<IP_SUBMITTER>:5000).
 
-## Note Importanti ##
+## Note Importanti 
 URL del Submitter: Chiedi al responsabile del Submitter qual è l'indirizzo IP corretto della macchina dove è in esecuzione il Submitter Web per impostare l'opzione -u correttamente. Se non specificato, tenterà di inviare a localhost.
 Formato Flag: Lo script sender.py non valida il formato della flag; la validazione avviene sul Submitter Web. Invia le flag così come le trovi.
 Autore e Servizio: Fornire informazioni accurate per --author e --service aiuta tutti a tracciare meglio l'efficacia dei vari exploit e chi ha trovato cosa.
