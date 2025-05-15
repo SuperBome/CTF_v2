@@ -1,0 +1,28 @@
+{# templates/_flags_tbody.html #}
+{% for flag in flags %}
+  <tr>
+    <td>{{ flag.id }}</td>
+    <td class="flag-col" title="{{ flag.flag }}">{{ flag.flag[:15] }}...</td>
+    <td>{{ flag.author }}</td>
+    <td>{{ flag.service }}</td>
+    <td>{{ flag.received_at.strftime('%Y-%m-%d %H:%M:%S') if flag.received_at else 'N/A' }}</td>
+    <td>{{ flag.submitted_at.strftime('%Y-%m-%d %H:%M:%S') if flag.submitted_at else 'N/A' }}</td>
+    <td><span class="status-{{ flag.status }}">{{ flag.status }}</span></td>
+    <td class="response-col" title="{{ flag.server_response }}">{{ flag.server_response if flag.server_response else '' }}</td>
+    {# NUOVA CELLA PER ELIMINAZIONE #}
+    <td>
+      <form method="POST" action="{{ url_for('delete_flag_route', flag_id=flag.id) }}"
+            onsubmit="return confirm('Sei sicuro di voler eliminare questa flag (ID: {{ flag.id }})?');"
+            style="display: inline;">
+        <button type="submit" class="btn btn-danger btn-sm" title="Elimina flag">
+          X
+        </button>
+      </form>
+    </td>
+  </tr>
+{% else %}
+  {# Modifica colspan per includere la nuova colonna #}
+  <tr>
+    <td colspan="9" class="text-center">Nessuna flag trovata con i filtri correnti.</td>
+  </tr>
+{% endfor %}
